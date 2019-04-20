@@ -166,12 +166,29 @@ const signUp = (event) => {
       $("<form>").append(errorMessage);
     }
   })
+
+  function myFunction() {
+    var errorMessage = $("#wrongPassword");
+    console.log(errorMessage)
+    var passwordInput = $('#user_password').val().text();
+    snap
+
+
+    if (passwordInput !=== ) {
+      errorMessage.style.display = "block"
+    } else {
+      errorMessage.style.display = "none"
+    }
+  }
+
+
+
   // } else { // if not matching, show an error. 
   //   $("#password").append("<p class='errorText'>passwords do not match</p>")
   // }
   return "user created";
 
-};
+// };
 
 
 
@@ -262,4 +279,4 @@ function init() {
 init();
 
 
-
+}
