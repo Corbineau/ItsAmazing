@@ -1,8 +1,8 @@
 {
     "development": {
       "username": "root",
-      "password": null,
-      "database": "blogger",
+      "password": "F@lcon101701",
+      "database": "hiHuman",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
@@ -17,11 +17,11 @@
     },
     "production": {
       "username": "root",
-      "password": null,
-      "database": "database_production",
+      "password": "F@lcon101701",
+      "database": "hiHuman",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
     }
   }
-  
+
