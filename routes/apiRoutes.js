@@ -23,6 +23,7 @@ var me = complete();
 router.put("/update", secured(), function (req, res) {
   const { name, username, profilePicture } = req.body;
   console.log(req.body);
+  console.log(res);
   //username will be the name that we display here
   if (!username || !name) {
     res.status(422);
