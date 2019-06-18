@@ -15,7 +15,7 @@ Handlebars.registerHelper('sequelizeGet', function(obj, col) {
 
 
 /* GET user profile. */
-router.get("/user", secured(), function (req, res, next) {
+router.get("/user", function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   // console.log(req.user);
   db.User.findOne({ //consider changing this to a findAll and add handling if more than one get added somehow.
@@ -24,8 +24,12 @@ router.get("/user", secured(), function (req, res, next) {
     }
   }).then(user => {
     if (user) {
-      console.log(`user exists! Id is: ${res.dataValues.id}`);
-      // res.get('id');
+      console.log(`user exists! Id is: ${user.get('id')}`);
+      res.render("userProfile", {
+        isLoggedIn: true,
+        fullname: user.get("name"),
+        profileImg: user.get("profilePicture")
+      });
       
     } else {
       //save the relevant auth0 user info into our DB, 
@@ -35,7 +39,14 @@ router.get("/user", secured(), function (req, res, next) {
         profilePicture: req.user.picture,
         name: req.user.fullname
       }).then(user => {
-        console.log(user.get())
+        console.log(user.get());
+        res.render("userProfile", {
+          isLoggedIn: true,
+          // userProfile: JSON.stringify(userProfile, null, 2),
+          //rawDB: JSON.stringify(current_user, null, 2),
+          fullname: user.get("name"),
+          profileImg: user.get("profilePicture")
+        })
         
         }
      
@@ -47,9 +58,6 @@ router.get("/user", secured(), function (req, res, next) {
 // console.log(current_user);
 res.render("userProfile", {
   isLoggedIn: true,
-  // userProfile: JSON.stringify(userProfile, null, 2),
-  //rawDB: JSON.stringify(current_user, null, 2),
-  title: "Profile page",
   fullname: res.get("name"),
   profileImg: res.get("profilePicture")
 });
