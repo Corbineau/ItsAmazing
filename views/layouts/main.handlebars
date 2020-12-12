@@ -24,18 +24,18 @@
 
   <body>
     <nav class="nav-extended">
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo">HiH</a>
-        <ul class="right hide-on-med-and-down">
-          {{#if isLoggedIn}}
-          <li><a href="/activities">Manage Activities</a></li>
-          <li><a href="/friends">Manage Friends</a></li>
-          <li><a href="/update">Update Profile</a></li>
-          <li id="logout"><a href="/logout">Log Out</a></li>
-          {{/if}}
-          {{!-- this works on home but not on users, FIX THIS. --}}
-        </ul>
-      </div>
+
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">[HiH]</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/activities">Manage Activities</a></li>
+                <li><a href="/friends">Manage Friends</a></li>
+                {{#if isLoggedIn}}<li id="logout"><a href="/logout">Log Out</a></li>
+                {{/if}}
+                {{!-- this works on home but not on users, FIX THIS. --}}
+            </ul>
+        </div>
+
     </nav>
 
     {{!-- makes body render in other hdb pages, pulls all html els included in
